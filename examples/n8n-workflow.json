@@ -1,0 +1,9 @@
+{
+  "name": "Agent Example Workflow",
+  "nodes": [
+    {
+      "type": "n8n-agent-node",
+      "parameters": {}
+    }
+  ]
+}
