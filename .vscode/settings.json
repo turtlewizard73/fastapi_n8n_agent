@@ -2,9 +2,7 @@
   "python.defaultInterpreterPath": "backend/.venv/bin/python",
   "python.terminal.activateEnvironment": true,
 
-  "ruff.interpreter": [
-    "backend/.venv/bin/python"
-  ],
+  "ruff.interpreter": ["backend/.venv/bin/python"],
 
   "[python]": {
     "editor.formatOnSave": true,
@@ -13,5 +11,10 @@
       "source.fixAll.ruff": "explicit",
       "source.organizeImports": "explicit"
     }
+  },
+
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

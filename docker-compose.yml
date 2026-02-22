@@ -12,22 +12,22 @@ services:
           target: /app/app
         - action: rebuild
           path: ./backend/pyproject.toml
-    networks:
-      - development-network
+    network_mode: host 
   n8n:
-    image: docker.n8n.io/n8nio/n8n
     container_name: n8n_server
-    ports:
-      - "5678:5678"
+    restart: unless-stopped
+    build:
+      context: ./n8n
+      dockerfile: Dockerfile
+      # args:
+      #   N8N_VERSION: 2.9.1
     environment:
       - GENERIC_TIMEZONE=Europe/Budapest
       - TZ=Europe/Budapest
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
     volumes:
-      - ./n8n_data:/home/node/.n8n
-    networks:
-      - development-network
-
-networks:
-  development-network:
-    driver: bridge
+      - ./n8n/n8n_data:/home/node/.n8n
+      # - ./n8n/custom_nodes:/home/node/.n8n/custom
+    ports:
+      - "5678:5678"
+    network_mode: host 
