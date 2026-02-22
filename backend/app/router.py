@@ -17,3 +17,8 @@ def redirect_to_docs():
 @router.get("/ping")
 def ping() -> int:
     return status.HTTP_200_OK
+
+
+@router.get("/hi")
+def hi() -> str:
+    return "Hello from the FastAPI Agent!"

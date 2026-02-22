@@ -30,4 +30,9 @@ services:
       # - ./n8n/custom_nodes:/home/node/.n8n/custom
     ports:
       - "5678:5678"
-    network_mode: host 
+    develop:
+      watch:
+        - action: sync
+          path: ./n8n/n8n_data
+          target: /home/node/.n8n
+    network_mode: host
