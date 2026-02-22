@@ -1,6 +1,7 @@
 # fastapi_n8n_agent
 
 A FastAPI backend and a custom n8n node workflows.
+[Thoughts on architecture.](./developer-notes.md)
 
 ## Prequsition
 
