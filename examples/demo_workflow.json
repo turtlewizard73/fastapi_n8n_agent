@@ -1,14 +1,11 @@
 {
-  "name": "demo workflow",
+  "name": "demo_workflow",
   "nodes": [
     {
       "parameters": {},
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
-      "position": [
-        -432,
-        -176
-      ],
+      "position": [-432, -176],
       "id": "ebe0f64d-b79a-4bb5-8809-ab638785d679",
       "name": "When clicking ‘Execute workflow’"
     },
@@ -21,10 +18,7 @@
       },
       "type": "CUSTOM.agentNode",
       "typeVersion": 1,
-      "position": [
-        -128,
-        -352
-      ],
+      "position": [-128, -352],
       "id": "922006bd-b92e-4798-aab6-e1b8ec3ca74c",
       "name": "Chat with Agent",
       "credentials": {
@@ -41,10 +35,7 @@
       },
       "type": "CUSTOM.agentNode",
       "typeVersion": 1,
-      "position": [
-        -128,
-        -176
-      ],
+      "position": [-128, -176],
       "id": "ee637486-aac9-420e-bcfd-df83a35ec18a",
       "name": "Summarize text",
       "credentials": {
@@ -64,10 +55,7 @@
       },
       "type": "CUSTOM.agentNode",
       "typeVersion": 1,
-      "position": [
-        -128,
-        32
-      ],
+      "position": [-128, 32],
       "id": "09350625-f255-4d23-9ab5-04b2704449c6",
       "name": "Extract structured fields",
       "credentials": {
@@ -102,9 +90,7 @@
       ]
     },
     "Chat with Agent": {
-      "main": [
-        []
-      ]
+      "main": [[]]
     }
   },
   "active": false,

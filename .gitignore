@@ -1,4 +1,5 @@
 .env
+*.zip
 
 # n8n
 n8n/n8n_data/*
