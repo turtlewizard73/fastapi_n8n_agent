@@ -6,7 +6,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.agent_service import AgentService
 from app.config import settings
-from app.router import router
+from app.routers.agent_router import router as agent_router
+from app.routers.default_router import router as default_router
 
 # Set up logging configuration
 logging.basicConfig(
@@ -36,7 +37,7 @@ async def lifespan(app: FastAPI):
         logger.info("Shutting down application...")
 
         if hasattr(app.state, "agent_service"):
-            app.state.agent_service.cleanup()
+            await app.state.agent_service.cleanup()
 
     except Exception as e:
         logger.error("Error during shutdown: %s", e, exc_info=True)
@@ -61,9 +62,10 @@ def create_application() -> FastAPI:
     )
 
     # Register API routers
-    app.include_router(router)
+    app.include_router(default_router, prefix="")
+    app.include_router(agent_router, prefix="/agent", tags=["agent"])
+
     return app
 
 
-# Create the FastAPI application
 app = create_application()

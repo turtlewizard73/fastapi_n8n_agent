@@ -30,7 +30,7 @@ export class AgentNodeApi implements ICredentialType {
   };
   test: ICredentialTestRequest = {
     request: {
-      baseURL: "http://localhost:8000",
+      baseURL: "http://fastapi:8000",
       url: "/ping",
     },
   };

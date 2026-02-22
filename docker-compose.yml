@@ -3,6 +3,7 @@ services:
     container_name: fastapi_backend
     restart: unless-stopped
     build: ./backend
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
     ports:
       - "8000:8000"
     develop:
@@ -12,7 +13,9 @@ services:
           target: /app/app
         - action: rebuild
           path: ./backend/pyproject.toml
-    network_mode: host 
+    # network_mode: host
+    networks:
+      - dev-network
   n8n:
     container_name: n8n_server
     restart: unless-stopped
@@ -27,7 +30,7 @@ services:
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
     volumes:
       - ./n8n/n8n_data:/home/node/.n8n
-      # - ./n8n/custom_nodes:/home/node/.n8n/custom
+      - ./agent_node/dist:/home/node/.n8n/custom:ro  # for development
     ports:
       - "5678:5678"
     develop:
@@ -35,4 +38,10 @@ services:
         - action: sync
           path: ./n8n/n8n_data
           target: /home/node/.n8n
-    network_mode: host
+    # network_mode: host
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    driver: bridge
